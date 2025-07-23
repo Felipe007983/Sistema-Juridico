@@ -2,7 +2,7 @@
 
 # Sistema Jurídico
 
-Sistema web para gestão jurídica, desenvolvido com Java Spring Boot no backend e [adicione o frontend se houver].
+Sistema web para gestão jurídica, desenvolvido com Java Spring Boot no backend.
 
 ---
 
