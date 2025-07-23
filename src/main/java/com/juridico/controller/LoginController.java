@@ -3,6 +3,8 @@ package com.juridico.controller;
 import com.juridico.model.Usuario;
 import com.juridico.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -16,20 +18,16 @@ public class LoginController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping
-    public String login(@RequestBody Usuario loginRequest) {
+    public ResponseEntity<?> login(@RequestBody Usuario loginRequest) {
         try {
-            // Faz autenticação
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            loginRequest.getEmail(),
-                            loginRequest.getSenha()
-                    )
+                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getSenha())
             );
-            // Se chegar aqui, login válid
-            return "Login efetuado com sucesso!";
+            return ResponseEntity.ok("Login bem‑sucedido!");
         } catch (AuthenticationException e) {
-            return "Usuário ou senha inválidos!";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
         }
     }
 }
+
 
