@@ -1,7 +1,5 @@
 # Sistema-Juridico
 
-# Sistema Jurídico
-
 Sistema web para gestão jurídica, desenvolvido com Java Spring Boot no backend.
 
 ---
